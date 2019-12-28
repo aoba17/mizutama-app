@@ -1,3 +1,3 @@
 (ns env.dev)
 (def hostname "oyamac.local")
-(def ip "127.0.0.1")
+(def ip "192.168.2.157")
