@@ -17,20 +17,21 @@ var createReactClass = require('create-react-class');
 var ReactNative = require('react-native');
 var Expo = require('expo');
 var WebSocket = require('WebSocket');
+// var WebSocket = require('ws');
 var self;
 var evaluate = eval; // This is needed, direct calls to eval does not work (RN packager???)
 var externalModules = {};
 var evalListeners = {};
 var asyncImportChain = new Promise(function (succ,fail) {succ(true);});
 
-// Add this function manually
-function asyncImportScripts(url, transform, success, error) {
-    asyncImportChain =
-        asyncImportChain
-        .then(function (v) {return fetch(url,{
-						headers:{'Content-Type': 'multipart/form-data',
-							       'Accept': 'application/json'}
-				});})}
+// // Add this function manually
+// function asyncImportScripts(url, transform, success, error) {
+//     asyncImportChain =
+//         asyncImportChain
+//         .then(function (v) {return fetch(url,{
+// 						headers:{'Content-Type': 'multipart/form-data',
+// 							       'Accept': 'application/json'}
+// 				});})}
 
 function fireEvalListenters(url) {
     Object.values(evalListeners).forEach(function (listener) {
